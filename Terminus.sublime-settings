@@ -74,7 +74,10 @@
     // keybind if it is not in the list)
     "preserve_keys" : [
         // "ctrl+k"   // there are a number of shortcuts with "ctrl+k" prefix.
-        // "ctrl+p"   // to show Go to Anything
+        // "ctrl+p",   // to show Go to Anything
+        // "ctrl+f",   // to show Find
+        // "ctrl+n",   // to open new tab
+        // "ctrl+w"    // to close window
     ],
 
     // the name of the theme

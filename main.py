@@ -44,7 +44,8 @@ from .terminus.commands import (
     ToggleTerminusPanelCommand,
     TerminusSendStringCommand,
     TerminusShowCursor,
-    TerminusInsertCommand
+    TerminusInsertCommand,
+    TerminusSendSelectedCommand
 )
 from .terminus.edit_settings import (
     TerminusEditSettingsListener,
@@ -72,7 +73,7 @@ __all__ = [
     "TerminusViewEventListener", "TerminusInitializeCommand", "TerminusActivateCommand",
     "TerminusResetCommand", "TerminusMaximizeCommand", "TerminusMinimizeCommand",
     "TerminusRenderCommand", "TerminusKeypressCommand", "TerminusCopyCommand",
-    "TerminusPasteCommand", "TerminusShowCursor", "TerminusInsertCommand",
+    "TerminusPasteCommand", "TerminusShowCursor", "TerminusInsertCommand", "TerminusSendSelectedCommand",
     "TerminusPasteFromHistoryCommand", "TerminusDeleteWordCommand", "ToggleTerminusPanelCommand",
     "TerminusSendStringCommand",
     "TerminusSelectThemeCommand", "TerminusGenerateThemeCommand",

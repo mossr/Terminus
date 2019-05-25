@@ -17,7 +17,10 @@ from .view import panel_window, panel_is_visible, view_is_visible
 
 KEYS = [
     "ctrl+k",
-    "ctrl+p"
+    "ctrl+p",
+    "ctrl+f",
+    "ctrl+n",
+    "ctrl+w"
 ]
 
 logger = logging.getLogger('Terminus')
@@ -1127,3 +1130,46 @@ class TerminusInsertCommand(sublime_plugin.TextCommand):
 
     def run(self, edit, point, character):
         self.view.insert(edit, point, character)
+
+class TerminusSendSelectedCommand(sublime_plugin.WindowCommand):
+  def run(self, ext = "", tag = None, keys = None, pre_window_hooks = None):
+    if tag:
+        terminal = Terminal.from_tag(tag)
+        if not terminal:
+            # pre_window_hooks
+            for hook in pre_window_hooks:
+                self.window.run_command(*hook)
+                # terminal = Terminal.from_tag(tag)
+                # terminal.view.run_command("terminus_show_cursor")
+
+    view = self.window.active_view()
+    filename = view.file_name()
+    no_file = filename == None
+
+    for region in view.sel():
+        is_ext = False
+        if not no_file:
+            filename_ext = os.path.splitext(filename)[-1]
+            is_ext = filename_ext == ext
+            if not is_ext:
+                print("File is not correct extension (" + ext + "): " + filename_ext)
+                break
+
+        if region.empty():
+            if is_ext:
+                # run include(filename) in Julia prompt
+                selection = "include(\"" + filename.replace("\\", "\\\\") + "\")"
+            else:
+                # If no selection, use the entire file as the selection
+                selection = view.substr(sublime.Region(0, view.size()))
+        else:
+            # paste entire file
+            selection = view.substr(region)
+
+        selection = selection + "\n" # newline runs command
+
+        try:
+            self.window.run_command("terminus_send_string", { "string": selection, "tag": tag })
+        except Exception:
+            self.show_exception()
+            sublime.message_dialog("TerminusSendSelectedCommand error.")
