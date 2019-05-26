@@ -1,0 +1,37 @@
+/*
+[
+    {
+        "command": "terminus_open_cmd",
+        "args": {
+            "cmd": "cmd.exe",
+            "cwd": "${file_path:${folder}}",
+            "title": "cmd",
+            "env": {
+                "PROMPT": "$E[1;34m$P$G$E[1;37m" // Blue CMD prompt
+            }
+        }
+    },
+    {
+        "command": "terminus_open",
+        "args": {
+            "cmd": ["cmd.exe", "/K", "clink", "inject"],
+            "cwd": "${file_path:${folder}}",
+            "title": "cmd",
+            "env": {
+                "PROMPT": "$E[1;34m$P$G$E[1;37m" // Blue CMD prompt
+            }
+        }
+    },
+    {
+        "command": "terminus_open_cmd_powershell",
+        "args": {
+            "cmd": ["cmd.exe", "/K", "powershell"],
+            "cwd": "${file_path:${folder}}",
+            "title": "cmd",
+            "env": {
+                "PROMPT": "$E[1;34m$P$G$E[1;37m" // Blue CMD prompt
+            }
+        }
+    },
+]
+*/
