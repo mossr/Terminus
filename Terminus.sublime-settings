@@ -77,7 +77,9 @@
         // "ctrl+p",   // to show Go to Anything
         // "ctrl+f",   // to show Find
         // "ctrl+n",   // to open new tab
-        // "ctrl+w"    // to close window
+        // "ctrl+w",   // to close window
+        // "ctrl+a",   // to select all
+        // "alt+[1-9]" // to switch to other tabs
     ],
 
     // the name of the theme
